@@ -1,0 +1,60 @@
+package com.gmail.bizkit245;
+
+public class Phone {
+
+	private long phoneNumber;
+	private String brand;
+	private Network network;
+
+	public Phone(long phoneNumber, String brand) {
+		super();
+		this.phoneNumber = phoneNumber;
+		this.brand = brand;
+	}
+
+	public Phone() {
+		super();
+	}
+
+	public long getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(long phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public String getBrand() {
+		return brand;
+	}
+
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
+
+	public void registerToNetwork(Network network) {
+		this.network = network;
+		this.network.addPhone(this);
+	}
+
+	public void call(long phoneNumber) {
+
+		Phone dialedPhone = this.network.getPhoneByNumber(phoneNumber);
+		if (dialedPhone != null) {
+			dialedPhone.incomingCall();
+		} else {
+			System.out.println("Subscriber is not available");
+		}
+
+	}
+
+	public void incomingCall() {
+		System.out.println(this + " Ring - Ding");
+	}
+
+	@Override
+	public String toString() {
+		return "Phone [phoneNumber=" + phoneNumber + ", brand=" + brand + "]";
+	}
+
+}

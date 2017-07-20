@@ -1,0 +1,46 @@
+ackage com.gmail.bizkit245;
+
+public class Network {
+
+	private Phone[] phoneBase = new Phone[0];
+
+	public Network(Phone[] phoneBase) {
+		super();
+		this.phoneBase = phoneBase;
+	}
+
+	public Network() {
+		super();
+	}
+
+	private int getPhoneIntoArray(Phone phone) {
+		for (int i = 0; i < phoneBase.length; i++) {
+			if (phoneBase[i].getPhoneNumber() == phone.getPhoneNumber()) {
+				return i;
+			}
+		}
+		return -1;
+	}
+
+	public void addPhone(Phone phone) {
+		if (getPhoneIntoArray(phone) != -1) {
+			System.out.println("Phone number " + phone.getPhoneNumber() + " alredy register");
+			return;
+		}
+		Phone[] temp = new Phone[phoneBase.length + 1];
+		System.arraycopy(phoneBase, 0, temp, 0, phoneBase.length);
+		temp[temp.length - 1] = phone;
+		phoneBase = temp;
+
+	}
+
+	public Phone getPhoneByNumber(long phoneNumber) {
+		for (Phone phone : phoneBase) {
+			if (phone.getPhoneNumber() == phoneNumber) {
+				return phone;
+			}
+		}
+		return null;
+	}
+
+}

@@ -1,0 +1,22 @@
+package com.gmail.bizkit245;
+
+public class Main {
+
+	public static void main(String[] args) {
+
+		Network MTC = new Network();
+		
+		Phone phoneOne = new Phone (256314587, "HTC");
+		Phone phoneTwo = new Phone (569823456, "Samsung");
+		Phone phoneThree = new Phone (256314587, "Apple");
+		
+		phoneOne.registerToNetwork(MTC);
+		phoneTwo.registerToNetwork(MTC);
+		phoneThree.registerToNetwork(MTC);
+		
+		phoneTwo.call(569823456);
+		
+		
+	}
+
+}
